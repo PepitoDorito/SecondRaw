@@ -390,7 +390,7 @@ a { color: inherit; text-decoration: none; }
 }
 .hero__card--wood   { top: 0; left: 0; rotate: -4deg; animation-delay: .5s; z-index: 3; }
 .hero__card--metal  { top: 31%; right: 0; rotate: 3deg; animation-delay: .68s; z-index: 2; }
-.hero__card--textile{ bottom: 0; left: 6%; rotate: -2deg; animation-delay: .86s; z-index: 1; }
+.hero__card--equip  { bottom: 0; left: 6%; rotate: -2deg; animation-delay: .86s; z-index: 1; }
 @keyframes cardIn {
   from { opacity: 0; transform: translateY(44px) scale(.94); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
@@ -521,6 +521,20 @@ a { color: inherit; text-decoration: none; }
     linear-gradient(35deg, transparent 63%, rgba(90, 78, 62, .28) 65%, transparent 66.5%);
 }
 
+.swatch--equip {
+  display: grid;
+  place-items: center;
+  color: var(--gold);
+  background:
+    radial-gradient(85% 95% at 72% 18%, rgba(201, 162, 74, .24), transparent 62%),
+    linear-gradient(150deg, #2a3d30 0%, #1d2b22 55%, #141f18 100%);
+}
+.swatch--equip svg {
+  width: 60%;
+  max-height: 76%;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, .35));
+}
+
 .swatch--plastic {
   background:
     linear-gradient(120deg, #d98e4e 0%, #e8a968 30%, #cd7f3f 55%, #eab077 80%, #d68d4f 100%);
@@ -626,6 +640,120 @@ a { color: inherit; text-decoration: none; }
 .mat-card__body p {
   font-size: .93rem; color: var(--ink-soft);
   margin-bottom: 1.1rem;
+}
+
+/* ---------- Equipment ---------- */
+.equipment { background: var(--paper-deep); }
+
+.equipment__filters {
+  max-width: 1280px;
+  margin: -1.4rem auto 2.4rem;
+  display: flex; flex-wrap: wrap; gap: .6rem;
+}
+.equipment__filters button {
+  font: inherit;
+  font-size: .9rem; font-weight: 600;
+  color: var(--ink-soft);
+  background: transparent;
+  border: 1.5px solid var(--line);
+  border-radius: 999px;
+  padding: .55em 1.35em;
+  cursor: pointer;
+  transition: color .25s, background-color .25s, border-color .25s,
+              transform .35s var(--ease-spring), box-shadow .35s var(--ease-out);
+}
+.equipment__filters button:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+  transform: translateY(-2px);
+}
+.equipment__filters button[aria-pressed="true"] {
+  color: var(--paper);
+  background: var(--ink);
+  border-color: var(--ink);
+  box-shadow: 0 10px 22px -12px rgba(29, 43, 34, .55);
+}
+
+.equipment__grid {
+  max-width: 1280px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(310px, 100%), 1fr));
+  gap: 1.6rem;
+}
+
+.eq-card {
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  display: flex; flex-direction: column;
+  transition: transform .5s var(--ease-out), box-shadow .5s var(--ease-out);
+}
+.eq-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-card-hover);
+}
+.eq-card.is-out { display: none; }
+.eq-card.pop { animation: eqIn .55s var(--ease-out); }
+@keyframes eqIn {
+  from { opacity: 0; transform: translateY(16px) scale(.97); }
+  to   { opacity: 1; transform: none; }
+}
+
+.eq-card__art {
+  position: relative;
+  height: 190px;
+}
+.eq-card__art svg { transition: transform .6s var(--ease-out); }
+.eq-card:hover .eq-card__art svg { transform: translateY(-5px) scale(1.05); }
+
+.eq-card__grade {
+  position: absolute; top: 14px; left: 14px;
+  z-index: 1;
+  font-size: .66rem; font-weight: 700;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink);
+  background: var(--gold);
+  padding: .35em .9em;
+  border-radius: 999px;
+}
+.eq-card__grade--b { background: var(--paper); }
+
+.eq-card__body {
+  padding: 1.4rem 1.6rem 1.6rem;
+  display: flex; flex-direction: column;
+  flex: 1;
+}
+.eq-card__origin {
+  font-size: .76rem; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--accent-deep);
+  margin-bottom: .5rem;
+}
+.eq-card__body h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  margin-bottom: .45rem;
+}
+.eq-card__body > p {
+  font-size: .9rem; color: var(--ink-soft);
+  margin-bottom: 1.2rem;
+  flex: 1;
+}
+.eq-card__foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+.eq-card__price {
+  display: flex; align-items: baseline; gap: .6em;
+}
+.eq-card__price s { font-size: .84rem; color: var(--ink-soft); opacity: .7; }
+.eq-card__price strong {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--accent-deep);
 }
 
 /* ---------- How it works (dark) ---------- */
