@@ -128,30 +128,6 @@
     });
   }
 
-  /* ---------- Equipment filters ---------- */
-  const filterBar = document.getElementById("eqFilters");
-  if (filterBar) {
-    const eqCards = Array.from(document.querySelectorAll(".eq-card"));
-    filterBar.addEventListener("click", (e) => {
-      const btn = e.target.closest("button[data-filter]");
-      if (!btn || btn.getAttribute("aria-pressed") === "true") return;
-      filterBar
-        .querySelectorAll("button")
-        .forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
-      const filter = btn.dataset.filter;
-      eqCards.forEach((card) => {
-        const show = filter === "all" || card.dataset.cat === filter;
-        card.classList.toggle("is-out", !show);
-        if (show) {
-          card.classList.add("is-in"); // don't wait for the reveal observer
-          card.classList.remove("pop");
-          void card.offsetWidth; // restart the entrance animation
-          card.classList.add("pop");
-        }
-      });
-    });
-  }
-
   /* ---------- CTA form ---------- */
   const form = document.getElementById("ctaForm");
   const email = document.getElementById("ctaEmail");
