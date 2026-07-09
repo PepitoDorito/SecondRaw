@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SecondRaw — Marketplace</title>
+  <meta name="description" content="Marketplace circular de materiais: compra e vende madeira, metal, têxtil, plástico e mais, a preços reduzidos." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="app.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%231d2b22'/><path d='M32 66 V38 a12 12 0 0 1 12-12 h6 a12 12 0 0 1 0 24 h-8 l18 16' stroke='%23e9e2d2' stroke-width='7' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
+</head>
+<body class="app-body">
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ======= App header ======= -->
+  <header class="appbar" id="appbar">
+    <div class="appbar__inner">
+      <a href="#/" class="logo" aria-label="SecondRaw — início">
+        <svg class="logo__mark" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="46" />
+          <path d="M32 66 V38 a12 12 0 0 1 12-12 h6 a12 12 0 0 1 0 24 h-8 l18 16" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="logo__word">Second<em>Raw</em></span>
+      </a>
+
+      <form class="appbar__search" id="topSearch" role="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        <input type="search" id="topSearchInput" placeholder="Pesquisar materiais…" aria-label="Pesquisar" />
+      </form>
+
+      <nav class="appbar__nav" id="appNav" aria-label="Principal"></nav>
+    </div>
+  </header>
+
+  <main id="app" class="app-main"><!-- vistas renderizadas aqui --></main>
+
+  <footer class="app-footer">
+    <div class="app-footer__inner">
+      <span>© 2026 SecondRaw — protótipo funcional (dados em localStorage).</span>
+      <div class="app-footer__links">
+        <a href="index.html">Página institucional</a>
+        <button type="button" id="resetDemo" class="linklike">Repor dados de demonstração</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- host de toasts / modais -->
+  <div id="toastHost" class="toast-host" aria-live="polite"></div>
+  <div id="modalHost"></div>
+
+  <script src="store.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
