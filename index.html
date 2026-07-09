@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RecondRaw — Reclaimed materials, reborn.</title>
+  <meta name="description" content="RecondRaw rescues surplus materials from companies — reclaimed wood, metal, textiles and more — and sells them to makers and builders at a fraction of the price." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%231d2b22'/><path d='M32 66 V38 a12 12 0 0 1 12-12 h6 a12 12 0 0 1 0 24 h-8 l18 16' stroke='%23e9e2d2' stroke-width='7' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>" />
+</head>
+<body>
+
+  <!-- ======= Grain overlay ======= -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ======= Progress bar ======= -->
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+  <!-- ======= Header ======= -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <a href="#top" class="logo" aria-label="RecondRaw — home">
+        <svg class="logo__mark" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="46" />
+          <path d="M32 66 V38 a12 12 0 0 1 12-12 h6 a12 12 0 0 1 0 24 h-8 l18 16" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="logo__word">Recond<em>Raw</em></span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="#materials" class="nav__link">Materials</a>
+        <a href="#how" class="nav__link">How it works</a>
+        <a href="#impact" class="nav__link">Impact</a>
+        <a href="#stories" class="nav__link">Stories</a>
+      </nav>
+
+      <div class="header__actions">
+        <a href="#sell" class="btn btn--ghost">Sell surplus</a>
+        <a href="#materials" class="btn btn--solid">Browse materials</a>
+      </div>
+
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ======= Mobile menu ======= -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav aria-label="Mobile">
+      <a href="#materials" class="mobile-menu__link">Materials</a>
+      <a href="#how" class="mobile-menu__link">How it works</a>
+      <a href="#impact" class="mobile-menu__link">Impact</a>
+      <a href="#stories" class="mobile-menu__link">Stories</a>
+      <a href="#sell" class="mobile-menu__link">Sell surplus</a>
+    </nav>
+    <a href="#materials" class="btn btn--solid btn--big">Browse materials</a>
+  </div>
+
+  <main id="top">
+
+    <!-- ======= Hero ======= -->
+    <section class="hero">
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow reveal"><span class="eyebrow__dot"></span>The circular materials marketplace</p>
+          <h1 class="hero__title">
+            <span class="line"><span>One company&rsquo;s</span></span>
+            <span class="line"><span class="hero__strike">surplus<svg viewBox="0 0 220 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14 C60 6, 160 20, 216 10" /></svg></span></span>
+            <span class="line"><span>is another&rsquo;s</span></span>
+            <span class="line"><span class="hero__accent">raw&nbsp;material.</span></span>
+          </h1>
+          <p class="hero__lede reveal">We rescue quality materials from factories, workshops and closing businesses — then pass them to makers, builders and creators at up to <strong>70% below market price</strong>. Nothing wasted. Everything reborn.</p>
+          <div class="hero__cta reveal">
+            <a href="#materials" class="btn btn--solid btn--big">
+              Browse materials
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#how" class="link-arrow">See how it works</a>
+          </div>
+
+          <dl class="hero__stats reveal">
+            <div class="stat">
+              <dt>Tonnes rescued</dt>
+              <dd><span class="count" data-count="4820">0</span></dd>
+            </div>
+            <div class="stat">
+              <dt>Partner companies</dt>
+              <dd><span class="count" data-count="316">0</span>+</dd>
+            </div>
+            <div class="stat">
+              <dt>Avg. saving</dt>
+              <dd><span class="count" data-count="64">0</span>%</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="hero__visual" aria-hidden="true">
+          <div class="hero__card hero__card--wood" data-tilt>
+            <div class="swatch swatch--wood"></div>
+            <div class="hero__card-meta">
+              <span class="tag">Reclaimed</span>
+              <h3>Oak offcuts, kiln-dried</h3>
+              <p>2.4 t · from a furniture workshop, Porto</p>
+              <div class="hero__card-price"><s>€890/t</s><strong>€260/t</strong></div>
+            </div>
+          </div>
+          <div class="hero__card hero__card--metal" data-tilt>
+            <div class="swatch swatch--metal"></div>
+            <div class="hero__card-meta">
+              <span class="tag">Surplus</span>
+              <h3>Brushed steel sheet</h3>
+              <p>640 m² · factory closure, Braga</p>
+              <div class="hero__card-price"><s>€41/m²</s><strong>€14/m²</strong></div>
+            </div>
+          </div>
+          <div class="hero__card hero__card--textile" data-tilt>
+            <div class="swatch swatch--textile"></div>
+            <div class="hero__card-meta">
+              <span class="tag">Deadstock</span>
+              <h3>Wool blend rolls</h3>
+              <p>1,180 m · end-of-line, Guimarães</p>
+              <div class="hero__card-price"><s>€22/m</s><strong>€7/m</strong></div>
+            </div>
+          </div>
+          <div class="hero__orbit"></div>
+        </div>
+      </div>
+
+      <div class="hero__scrollcue" aria-hidden="true">
+        <span></span>
+      </div>
+    </section>
+
+    <!-- ======= Marquee ======= -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Reclaimed wood</span><i>✦</i><span>Surplus steel</span><i>✦</i><span>Deadstock textiles</span><i>✦</i><span>Architectural glass</span><i>✦</i><span>Recovered stone</span><i>✦</i><span>Industrial plastics</span><i>✦</i>
+        <span>Reclaimed wood</span><i>✦</i><span>Surplus steel</span><i>✦</i><span>Deadstock textiles</span><i>✦</i><span>Architectural glass</span><i>✦</i><span>Recovered stone</span><i>✦</i><span>Industrial plastics</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- ======= Materials ======= -->
+    <section class="section materials" id="materials">
+      <div class="section__head reveal">
+        <p class="eyebrow"><span class="eyebrow__dot"></span>The catalogue</p>
+        <h2 class="section__title">Materials with a <em>past</em> —<br />and plenty of future.</h2>
+        <p class="section__lede">Every lot is inspected, graded and documented before it goes live. You always know where it came from, what condition it&rsquo;s in, and how much you&rsquo;re saving.</p>
+      </div>
+
+      <div class="materials__grid">
+        <article class="mat-card reveal" style="--d:0">
+          <div class="swatch swatch--wood"></div>
+          <div class="mat-card__body">
+            <div class="mat-card__top"><h3>Wood &amp; timber</h3><span class="mat-card__count">128 lots</span></div>
+            <p>Hardwood offcuts, beams, panels and veneers from furniture makers and joineries.</p>
+            <a class="link-arrow" href="#sell">Explore wood</a>
+          </div>
+        </article>
+
+        <article class="mat-card reveal" style="--d:1">
+          <div class="swatch swatch--metal"></div>
+          <div class="mat-card__body">
+            <div class="mat-card__top"><h3>Metal &amp; steel</h3><span class="mat-card__count">86 lots</span></div>
+            <p>Sheet, tube and profile stock from fabricators, plus fittings from industrial closures.</p>
+            <a class="link-arrow" href="#sell">Explore metal</a>
+          </div>
+        </article>
+
+        <article class="mat-card reveal" style="--d:2">
+          <div class="swatch swatch--textile"></div>
+          <div class="mat-card__body">
+            <div class="mat-card__top"><h3>Textiles</h3><span class="mat-card__count">57 lots</span></div>
+            <p>Deadstock fabric rolls, leather hides and trims from mills and fashion houses.</p>
+            <a class="link-arrow" href="#sell">Explore textiles</a>
+          </div>
+        </article>
+
+        <article class="mat-card reveal" style="--d:3">
+          <div class="swatch swatch--glass"></div>
+          <div class="mat-card__body">
+            <div class="mat-card__top"><h3>Glass</h3><span class="mat-card__count">34 lots</span></div>
+            <p>Architectural panes, blocks and specialty glass recovered from fit-outs and demolitions.</p>
+            <a class="link-arrow" href="#sell">Explore glass</a>
+          </div>
+        </article>
+
+        <article class="mat-card reveal" style="--d:4">
+          <div class="swatch swatch--stone"></div>
+          <div class="mat-card__body">
+            <div class="mat-card__top"><h3>Stone &amp; ceramic</h3><span class="mat-card__count">41 lots</span></div>
+            <p>Marble slabs, tiles and aggregates from quarries, showrooms and renovation projects.</p>
+            <a class="link-arrow" href="#sell">Explore stone</a>
+          </div>
+        </article>
+
+        <article class="mat-card reveal" style="--d:5">
+          <div class="swatch swatch--plastic"></div>
+          <div class="mat-card__body">
+            <div class="mat-card__top"><h3>Plastics &amp; polymers</h3><span class="mat-card__count">63 lots</span></div>
+            <p>Acrylic sheet, regrind pellets and technical polymers from manufacturers&rsquo; overstock.</p>
+            <a class="link-arrow" href="#sell">Explore plastics</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ======= How it works ======= -->
+    <section class="section how" id="how">
+      <div class="section__head section__head--light reveal">
+        <p class="eyebrow eyebrow--light"><span class="eyebrow__dot"></span>The process</p>
+        <h2 class="section__title">From their loading dock<br />to <em>your workshop.</em></h2>
+      </div>
+
+      <ol class="steps">
+        <li class="step reveal" style="--d:0">
+          <span class="step__num">01</span>
+          <div class="step__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><path d="M8 34 V16 l16-8 16 8 v18 l-16 8 z M8 16 l16 8 16-8 M24 24 v18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Companies list surplus</h3>
+          <p>Factories, workshops and closing businesses tell us what they have — offcuts, overstock, end-of-line runs, whole inventories.</p>
+        </li>
+        <li class="step reveal" style="--d:1">
+          <span class="step__num">02</span>
+          <div class="step__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><circle cx="21" cy="21" r="12" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M30 30 l10 10 M16 21 l4 4 7-8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>We inspect &amp; grade</h3>
+          <p>Our team checks quantity, quality and provenance, then grades each lot A–C so buyers know exactly what they&rsquo;re getting.</p>
+        </li>
+        <li class="step reveal" style="--d:2">
+          <span class="step__num">03</span>
+          <div class="step__icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48"><path d="M10 14 h20 v18 H10 z M30 20 h6 l4 5 v7 h-10 M14 38 a3 3 0 1 0 .1 0 M32 38 a3 3 0 1 0 .1 0" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>You buy &amp; we deliver</h3>
+          <p>Buy by the lot, pallet or metre at a fraction of retail. We handle logistics, paperwork and delivery to your door.</p>
+        </li>
+      </ol>
+
+      <div class="how__cta reveal">
+        <a href="#sell" class="btn btn--light btn--big">Start selling or buying</a>
+      </div>
+    </section>
+
+    <!-- ======= Impact ======= -->
+    <section class="section impact" id="impact">
+      <div class="impact__inner">
+        <div class="impact__copy reveal">
+          <p class="eyebrow"><span class="eyebrow__dot"></span>Why it matters</p>
+          <h2 class="section__title">Good for your budget.<br /><em>Better for the planet.</em></h2>
+          <p class="section__lede">Every tonne of material that finds a second life is a tonne that never becomes landfill — and a tonne that never has to be produced from scratch.</p>
+          <ul class="impact__list">
+            <li><strong>12,400 t CO₂e avoided</strong> versus producing the same materials new.</li>
+            <li><strong>€3.1M returned</strong> to companies for materials they&rsquo;d have paid to dispose of.</li>
+            <li><strong>2,900+ projects</strong> built with rescued materials — from cafés to concert halls.</li>
+          </ul>
+        </div>
+
+        <div class="impact__viz reveal" aria-hidden="true">
+          <div class="ring">
+            <svg viewBox="0 0 200 200">
+              <circle class="ring__track" cx="100" cy="100" r="84" />
+              <circle class="ring__fill" cx="100" cy="100" r="84" />
+            </svg>
+            <div class="ring__label">
+              <strong><span class="count" data-count="92">0</span>%</strong>
+              <span>of listed lots find<br />a new owner</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= Stories / testimonials ======= -->
+    <section class="section stories" id="stories">
+      <div class="section__head reveal">
+        <p class="eyebrow"><span class="eyebrow__dot"></span>Stories</p>
+        <h2 class="section__title">Built on <em>second chances.</em></h2>
+      </div>
+
+      <div class="stories__grid">
+        <figure class="quote reveal" style="--d:0">
+          <blockquote>&ldquo;We furnished our entire café with oak that would have been chipped for fuel. It cost a third of the quote we had for new — and every table has a story.&rdquo;</blockquote>
+          <figcaption>
+            <span class="quote__avatar" aria-hidden="true">MC</span>
+            <div><strong>Marta Costa</strong><span>Founder, Café Norte — Porto</span></div>
+          </figcaption>
+        </figure>
+
+        <figure class="quote reveal" style="--d:1">
+          <blockquote>&ldquo;When we closed our factory, RecondRaw turned three warehouses of stock into revenue in six weeks. Nothing went to the skip.&rdquo;</blockquote>
+          <figcaption>
+            <span class="quote__avatar" aria-hidden="true">JR</span>
+            <div><strong>João Ribeiro</strong><span>Former MD, Ribeiro Metalworks</span></div>
+          </figcaption>
+        </figure>
+
+        <figure class="quote reveal" style="--d:2">
+          <blockquote>&ldquo;As a small studio, deadstock fabric is how we compete. Same mills the big brands use, at prices we can actually afford.&rdquo;</blockquote>
+          <figcaption>
+            <span class="quote__avatar" aria-hidden="true">AS</span>
+            <div><strong>Ana Silva</strong><span>Designer, Atelier Fio</span></div>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ======= CTA ======= -->
+    <section class="section cta" id="sell">
+      <div class="cta__card reveal">
+        <div class="cta__glow" aria-hidden="true"></div>
+        <h2>Have materials?<br />Need materials?<br /><em>Either way — welcome.</em></h2>
+        <p>Tell us what you have or what you&rsquo;re looking for, and we&rsquo;ll be in touch within one working day.</p>
+        <form class="cta__form" id="ctaForm" novalidate>
+          <div class="cta__field">
+            <input type="email" id="ctaEmail" name="email" placeholder=" " required autocomplete="email" />
+            <label for="ctaEmail">Your work email</label>
+          </div>
+          <div class="cta__choice" role="group" aria-label="I want to">
+            <label><input type="radio" name="intent" value="sell" checked /><span>I&rsquo;m selling</span></label>
+            <label><input type="radio" name="intent" value="buy" /><span>I&rsquo;m buying</span></label>
+          </div>
+          <button type="submit" class="btn btn--solid btn--big">Get started</button>
+          <p class="cta__done" id="ctaDone" hidden>✓ Thanks — we&rsquo;ll be in touch shortly.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======= Footer ======= -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <a href="#top" class="logo logo--footer" aria-label="RecondRaw — home">
+          <svg class="logo__mark" viewBox="0 0 100 100" aria-hidden="true">
+            <circle cx="50" cy="50" r="46" />
+            <path d="M32 66 V38 a12 12 0 0 1 12-12 h6 a12 12 0 0 1 0 24 h-8 l18 16" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="logo__word">Recond<em>Raw</em></span>
+        </a>
+        <p>Reclaimed materials, reborn.<br />Porto · Lisboa · Madrid</p>
+      </div>
+      <nav class="footer__col" aria-label="Marketplace">
+        <h4>Marketplace</h4>
+        <a href="#materials">Browse materials</a>
+        <a href="#sell">Sell surplus</a>
+        <a href="#how">How it works</a>
+      </nav>
+      <nav class="footer__col" aria-label="Company">
+        <h4>Company</h4>
+        <a href="#impact">Impact</a>
+        <a href="#stories">Stories</a>
+        <a href="mailto:hello@recondraw.com">Contact</a>
+      </nav>
+      <nav class="footer__col" aria-label="Legal">
+        <h4>Legal</h4>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+      </nav>
+    </div>
+    <div class="footer__base">
+      <span>© 2026 RecondRaw. Every material deserves a second act.</span>
+      <a href="#top" class="footer__up" aria-label="Back to top">↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
