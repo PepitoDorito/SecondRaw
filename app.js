@@ -70,6 +70,26 @@
     return `<div class="swatch swatch--${catSwatch(cat)}"></div>`;
   }
 
+  /* ---------- Ícones (traço, coerentes com a landing) ---------- */
+  const ICONS = {
+    chat: '<path d="M4 5.5h16v11h-9.5L6 20v-3.5H4z"/>',
+    bell: '<path d="M18 10a6 6 0 1 0-12 0c0 5-2 6.5-2 6.5h16S18 15 18 10z"/><path d="M10 19.5a2.3 2.3 0 0 0 4 0"/>',
+    cart: '<path d="M3.5 4.5h2.2L8 15h10l2-7.5H6.2"/><circle cx="9.5" cy="19" r="1.4"/><circle cx="16.5" cy="19" r="1.4"/>',
+    pin: '<path d="M12 21c-4-3.8-6-7-6-9.8A6 6 0 0 1 18 11.2C18 14 16 17.2 12 21z"/><circle cx="12" cy="11" r="2.3"/>',
+    phone: '<rect x="7" y="2.5" width="10" height="19" rx="2.6"/><path d="M10.8 18.5h2.4"/>',
+    cardpay: '<rect x="2.5" y="5" width="19" height="14" rx="2.6"/><path d="M2.5 9.5h19M6 15h4"/>',
+    ref: '<rect x="4" y="3" width="16" height="18" rx="2.4"/><path d="M8 8h8M8 12h8M8 16h5"/>',
+    coin: '<circle cx="12" cy="12" r="8.5"/><path d="M15 9.3a4 4 0 1 0 0 5.4M8.2 11h4M8.2 13h4"/>',
+    box: '<path d="M3.5 7.5 12 3.5l8.5 4v9l-8.5 4-8.5-4z"/><path d="M3.5 7.5 12 11.5l8.5-4M12 11.5V20.5"/>',
+    swap: '<path d="M6.5 9.5h11l-3.2-3.2M17.5 14.5h-11l3.2 3.2"/>',
+    star: '<path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.9-5.2-2.8-5.2 2.8 1-5.9L3.5 9.7l5.9-.9z"/>',
+    check: '<path d="M5 13l4.5 4.5L19 7"/>',
+    google: '<path d="M20.5 12a8.5 8.5 0 1 1-2.5-6M20.5 12h-8.5"/>',
+    apple: '<path fill="currentColor" stroke="none" d="M16.7 12.9c0-2 1.6-3 1.7-3.1-1-1.4-2.4-1.6-2.9-1.6-1.2-.1-2.4.7-3 .7-.6 0-1.6-.7-2.6-.7-1.3 0-2.6.8-3.3 2-1.4 2.4-.4 6 1 8 .7 1 1.5 2.1 2.5 2 1 0 1.4-.6 2.6-.6 1.2 0 1.5.6 2.6.6s1.8-1 2.4-1.9c.8-1.1 1.1-2.2 1.1-2.3-.1 0-2.1-.8-2.1-3.1zM14.9 6.7c.5-.7.9-1.6.8-2.6-.8 0-1.8.6-2.3 1.3-.5.6-1 1.6-.8 2.5.9.1 1.8-.5 2.3-1.2z"/>',
+  };
+  const icon = (n, cls) =>
+    `<svg class="ic${cls ? " " + cls : ""}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONS[n] || ""}</svg>`;
+
   /* ---------- Cart (RF15) ---------- */
   const CART_KEY = "secondraw:cart";
   const Cart = {
@@ -110,13 +130,13 @@
     let html = `<a href="#/" data-route="/">Mercado</a>`;
     if (u) {
       html += `<a href="#/vender" data-route="/vender">Vender</a>`;
-      html += `<button class="navchip" data-go="#/mensagens" title="Mensagens">💬</button>`;
-      html += `<button class="navchip" data-go="#/notificacoes" title="Notificações">🔔${unread ? `<span class="navchip__badge">${unread}</span>` : ""}</button>`;
-      html += `<button class="navchip" data-go="#/carrinho" title="Carrinho">🛒${cartN ? `<span class="navchip__badge">${cartN}</span>` : ""}</button>`;
+      html += `<button class="navchip" data-go="#/mensagens" title="Mensagens" aria-label="Mensagens">${icon("chat")}</button>`;
+      html += `<button class="navchip" data-go="#/notificacoes" title="Notificações" aria-label="Notificações">${icon("bell")}${unread ? `<span class="navchip__badge">${unread}</span>` : ""}</button>`;
+      html += `<button class="navchip" data-go="#/carrinho" title="Carrinho" aria-label="Carrinho">${icon("cart")}${cartN ? `<span class="navchip__badge">${cartN}</span>` : ""}</button>`;
       if (u.role === "admin") html += `<a href="#/admin" data-route="/admin">Admin</a>`;
       html += `<button class="navchip" id="userMenuBtn" title="Conta"><span class="avatar">${initials(u.name)}</span></button>`;
     } else {
-      html += `<button class="navchip" data-go="#/carrinho" title="Carrinho">🛒${cartN ? `<span class="navchip__badge">${cartN}</span>` : ""}</button>`;
+      html += `<button class="navchip" data-go="#/carrinho" title="Carrinho" aria-label="Carrinho">${icon("cart")}${cartN ? `<span class="navchip__badge">${cartN}</span>` : ""}</button>`;
       html += `<a href="#/entrar" data-route="/entrar">Entrar</a>`;
       html += `<a href="#/registar" class="btn btn--solid btn--sm">Criar conta</a>`;
     }
@@ -209,7 +229,8 @@
 
     appEl.innerHTML = `
       <div class="page-head">
-        <h1>Mercado de materiais</h1>
+        <p class="eyebrow"><span class="eyebrow__dot"></span>O mercado circular</p>
+        <h1>Materiais com <em>segunda vida.</em></h1>
         <p>Lotes inspecionados de empresas e particulares — madeira, metal, têxtil, plástico, construção e mais.</p>
       </div>
       <div class="grid-2">
@@ -300,7 +321,7 @@
         <div class="lcard__body">
           <div class="pill-row"><span class="badge badge--muted">${catLabel(l.category)}</span><span class="badge badge--sage">${condLabel(l.condition)}</span></div>
           <div class="lcard__title">${esc(l.title)}</div>
-          <div class="lcard__meta">📍 ${esc(l.location)} · ${seller ? esc(seller.name) : "—"}${seller && seller.nifVerified ? " ✓" : ""}</div>
+          <div class="lcard__meta">${icon("pin")} ${esc(l.location)} · ${seller ? esc(seller.name) : "—"}${seller && seller.nifVerified ? " ✓" : ""}</div>
           <div class="lcard__foot">
             <span class="lcard__price">${money(l.price)}<small>/${esc(l.unit)}</small></span>
             <span class="muted" style="font-size:.78rem">${l.quantity.toLocaleString("pt-PT")} ${esc(l.unit)}</span>
@@ -334,7 +355,7 @@
             ${photos.map((p, i) => `<button class="gallery__thumb ${i === 0 ? "is-active" : ""}" data-i="${i}">${swatch(l.category)}</button>`).join("")}
           </div>
           <div class="card mt-3">
-            <h3 style="font-family:var(--font-display);font-weight:400;font-size:1.3rem;margin-bottom:.5rem">Descrição</h3>
+            <h3 class="t-card">Descrição</h3>
             <p style="white-space:pre-wrap">${esc(l.description)}</p>
           </div>
         </div>
@@ -342,7 +363,7 @@
         <div>
           <div class="pill-row"><span class="badge badge--muted">${catLabel(l.category)}</span><span class="badge badge--sage">${condLabel(l.condition)}</span></div>
           <h1 class="detail__title">${esc(l.title)}</h1>
-          <div class="muted">📍 ${esc(l.location)} · publicado ${timeAgo(l.createdAt)}</div>
+          <div class="muted">${icon("pin")} ${esc(l.location)} · publicado ${timeAgo(l.createdAt)}</div>
           <div class="detail__price">${money(l.price)} <small>/ ${esc(l.unit)}</small></div>
 
           <dl class="spec-list">
@@ -483,8 +504,8 @@
         <h1>Criar conta</h1>
         <p class="muted">Junta-te ao mercado circular de materiais.</p>
         <div class="oauth mt-2">
-          <button data-social="Google">🔵 Continuar com Google</button>
-          <button data-social="Apple"> Continuar com Apple</button>
+          <button data-social="Google">${icon("google")} Continuar com Google</button>
+          <button data-social="Apple">${icon("apple")} Continuar com Apple</button>
         </div>
         <div class="divider">ou com email</div>
         <div class="form-error" id="err" hidden></div>
@@ -532,8 +553,8 @@
         <h1>Entrar</h1>
         <p class="muted">Bem-vindo de volta.</p>
         <div class="oauth mt-2">
-          <button data-social="Google">🔵 Continuar com Google</button>
-          <button data-social="Apple"> Continuar com Apple</button>
+          <button data-social="Google">${icon("google")} Continuar com Google</button>
+          <button data-social="Apple">${icon("apple")} Continuar com Apple</button>
         </div>
         <div class="divider">ou com email</div>
         <div class="form-error" id="err" hidden></div>
@@ -589,7 +610,7 @@
       <div class="grid-2">
         <div class="card" style="text-align:center">
           <span class="avatar avatar--lg" style="margin:0 auto .8rem">${initials(u.name)}</span>
-          <h3 style="font-family:var(--font-display);font-weight:400">${esc(u.name)}</h3>
+          <h3 class="t-card">${esc(u.name)}</h3>
           <div class="muted">${esc(u.email)}</div>
           <div class="pill-row mt-2" style="justify-content:center">
             <span class="badge ${u.type === "company" ? "badge--accent" : "badge--muted"}">${u.type === "company" ? "Empresa" : "Comprador"}</span>
@@ -599,7 +620,7 @@
           ${u.type === "company" ? verificationBlock(u) : ""}
         </div>
         <div class="card">
-          <h3 style="font-family:var(--font-display);font-weight:400;margin-bottom:1rem">Dados</h3>
+          <h3 class="t-card">Dados</h3>
           <div class="field"><label>Nome</label><input class="input" id="pName" value="${esc(u.name)}"></div>
           <div class="field"><label>Foto (URL, opcional)</label><input class="input" id="pPhoto" value="${esc(u.photo)}" placeholder="https://…"></div>
           <div class="row">
@@ -651,7 +672,7 @@
           <div class="flex" style="gap:1rem">
             <span class="avatar avatar--lg">${initials(u.name)}</span>
             <div>
-              <h1 style="font-family:var(--font-display);font-weight:400;font-size:1.8rem">${esc(u.name)}</h1>
+              <h1 class="t-card t-card--lg">${esc(u.name)}</h1>
               <div class="pill-row">
                 <span class="badge ${u.type === "company" ? "badge--accent" : "badge--muted"}">${u.type === "company" ? "Empresa" : "Comprador"}</span>
                 ${u.nifVerified ? '<span class="badge badge--ok">✓ Verificada</span>' : ""}
@@ -665,10 +686,10 @@
         </div>
       </div>
 
-      <h2 style="font-family:var(--font-display);font-weight:400;margin:2rem 0 1rem">Anúncios (${listings.length})</h2>
+      <h2 class="t-section">Anúncios (${listings.length})</h2>
       <div class="listings-grid">${listings.length ? listings.map(listingCard).join("") : '<p class="muted">Sem anúncios ativos.</p>'}</div>
 
-      <h2 style="font-family:var(--font-display);font-weight:400;margin:2rem 0 1rem">Avaliações (${reviews.length})</h2>
+      <h2 class="t-section">Avaliações (${reviews.length})</h2>
       <div>${reviews.length ? reviews.map(reviewCard).join("") : '<p class="muted">Ainda sem avaliações.</p>'}</div>`;
 
     $$(".lcard").forEach((c) => c.addEventListener("click", () => (location.hash = "#/anuncio/" + c.dataset.id)));
@@ -811,7 +832,7 @@
             </div>`).join("")}
         </div>
         <aside class="card" style="align-self:start">
-          <h3 style="font-family:var(--font-display);font-weight:400;margin-bottom:.6rem">Resumo</h3>
+          <h3 class="t-card">Resumo</h3>
           <div class="summary"><span>Subtotal</span><span>${money(subtotal)}</span></div>
           <div class="summary"><span>Comissão plataforma (${(S.COMMISSION_RATE * 100)}%)</span><span>${money(S.commissionFor(subtotal))}</span></div>
           <div class="summary summary--total"><span>Total (sem envio)</span><span>${money(subtotal + S.commissionFor(subtotal))}</span></div>
@@ -855,7 +876,7 @@
       <div class="grid-2" style="grid-template-columns:1fr 340px">
         <div>
           <div class="card mb-2">
-            <h3 style="font-family:var(--font-display);font-weight:400;margin-bottom:.8rem">Entrega (RF18)</h3>
+            <h3 class="t-card">Entrega (RF18)</h3>
             <div class="seg" id="delSeg">
               <button data-del="pickup" class="is-active">Recolha local (grátis)</button>
               <button data-del="courier">Envio por transportadora (€12,50)</button>
@@ -863,17 +884,17 @@
             <div class="field mt-2" id="addrField" hidden><label>Morada de entrega</label><input class="input" id="ckAddr" value="${esc(u.address)}" placeholder="Morada completa"></div>
           </div>
           <div class="card">
-            <h3 style="font-family:var(--font-display);font-weight:400;margin-bottom:.8rem">Pagamento (RF16)</h3>
+            <h3 class="t-card">Pagamento (RF16)</h3>
             <div class="pay-methods" id="payMethods">
-              <label class="pay-opt is-active"><input type="radio" name="pay" value="mbway" checked> 📱 MB Way</label>
-              <label class="pay-opt"><input type="radio" name="pay" value="card"> 💳 Cartão</label>
-              <label class="pay-opt"><input type="radio" name="pay" value="multibanco"> 🏧 Referência MB</label>
+              <label class="pay-opt is-active"><input type="radio" name="pay" value="mbway" checked> ${icon("phone")} MB Way</label>
+              <label class="pay-opt"><input type="radio" name="pay" value="card"> ${icon("cardpay")} Cartão</label>
+              <label class="pay-opt"><input type="radio" name="pay" value="multibanco"> ${icon("ref")} Referência MB</label>
             </div>
             <div id="payDetails" class="mt-2"></div>
           </div>
         </div>
         <aside class="card" style="align-self:start">
-          <h3 style="font-family:var(--font-display);font-weight:400;margin-bottom:.6rem">Encomenda</h3>
+          <h3 class="t-card">Encomenda</h3>
           ${items.map((i) => `<div class="summary"><span>${esc(i.listing.title)} ×${i.qty}</span><span>${money(i.listing.price * i.qty)}</span></div>`).join("")}
           <hr class="hr">
           <div class="summary"><span>Subtotal</span><span>${money(subtotal)}</span></div>
@@ -913,7 +934,7 @@
       const refHtml = method === "multibanco" ? `<div class="callout mt-2 text-c"><strong>Referência Multibanco</strong><br>Entidade <b>${order.payment.ref.entity}</b> · Referência <b>${order.payment.ref.ref}</b><br>Valor ${money(order.total)}</div>` : "";
       const m = modal(`
         <div class="text-c">
-          <div style="font-size:2.6rem">✓</div>
+          <div class="check-big">${icon("check")}</div>
           <h2>Pagamento confirmado</h2>
           <p class="muted">Encomenda ${order.id} · ${money(order.total)}</p>
           ${refHtml}
@@ -1132,7 +1153,7 @@
     // ao entrar, marca como lidas passado um instante
     setTimeout(() => { S.markNotificationsRead(u.id); updateNav(); }, 1500);
   }
-  const notifIcon = (t) => ({ message: "💬", sale: "💰", order: "📦", proposal: "🤝", review: "⭐" }[t] || "🔔");
+  const notifIcon = (t) => icon({ message: "chat", sale: "coin", order: "box", proposal: "swap", review: "star" }[t] || "bell");
 
   /* ==========================================================================
      VISTA: Premium (RF30), destaques (RF31), sustentabilidade (RF32)
@@ -1145,8 +1166,8 @@
       <div class="grid-2" style="grid-template-columns:1fr 1fr">
         <div class="card card--pad-lg">
           <span class="badge badge--gold">RF30 · Subscrição Premium</span>
-          <h2 style="font-family:var(--font-display);font-weight:400;font-size:1.8rem;margin:.6rem 0">SecondRaw Premium</h2>
-          <div style="font-family:var(--font-display);font-size:2.4rem">€29<small class="muted" style="font-size:1rem">/mês</small></div>
+          <h2 class="t-card t-card--lg" style="margin:.6rem 0">SecondRaw Premium</h2>
+          <div class="price-big">€29<small>/mês</small></div>
           <ul class="impact__list mt-2" style="list-style:none;padding:0">
             <li>✓ Anúncios em destaque ilimitados (RF31)</li>
             <li>✓ Selo Premium no perfil</li>
@@ -1159,7 +1180,7 @@
         </div>
         <div class="card card--pad-lg">
           <span class="badge badge--sage">RF32 · Sustentabilidade</span>
-          <h2 style="font-family:var(--font-display);font-weight:400;font-size:1.8rem;margin:.6rem 0">Relatório de impacto</h2>
+          <h2 class="t-card t-card--lg" style="margin:.6rem 0">Relatório de impacto</h2>
           ${isCompany ? sustainabilityReport(u) : '<div class="callout">Disponível para contas de empresa vendedoras.</div>'}
         </div>
       </div>`;

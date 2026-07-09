@@ -52,10 +52,59 @@
 }
 .avatar--lg { width: 64px; height: 64px; font-size: 1.3rem; }
 
+/* ---------- Ícones ---------- */
+.ic {
+  display: inline-block;
+  width: 1.15em; height: 1.15em;
+  vertical-align: -.22em;
+  flex: 0 0 auto;
+}
+.navchip .ic { width: 20px; height: 20px; vertical-align: middle; }
+.lcard__meta .ic { width: .95em; height: .95em; vertical-align: -.12em; color: var(--accent-deep); }
+.pay-opt .ic { width: 21px; height: 21px; color: var(--ink-soft); transition: color .2s; }
+.pay-opt.is-active .ic { color: var(--accent-deep); }
+.oauth .ic { width: 18px; height: 18px; }
+.notif__dot .ic { width: 17px; height: 17px; }
+
+/* ---------- Tipografia utilitária (coerente com a landing) ---------- */
+.t-card {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.22rem;
+  line-height: 1.2;
+  margin-bottom: .7rem;
+}
+.t-card--lg { font-size: 1.8rem; font-weight: 500; }
+.t-section {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.55rem;
+  margin: 2.2rem 0 1rem;
+}
+.price-big {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  color: var(--accent-deep);
+  margin: .3rem 0 .5rem;
+}
+.price-big small { font-size: 1rem; color: var(--ink-soft); font-family: var(--font-body); }
+
+.check-big {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  margin: 0 auto 1rem;
+  background: rgba(47, 125, 84, .14);
+  color: #2f7d54;
+}
+.check-big .ic { width: 30px; height: 30px; }
+
 /* ---------- Layout ---------- */
 .app-main { flex: 1 0 auto; max-width: 1240px; width: 100%; margin: 0 auto; padding: 2rem var(--gutter) 4rem; }
 .page-head { margin-bottom: 1.6rem; }
-.page-head h1 { font-family: var(--font-display); font-size: var(--fs-h2); font-weight: 400; line-height: 1.05; }
+.page-head h1 { font-family: var(--font-display); font-size: var(--fs-h2); font-weight: 500; line-height: 1.05; letter-spacing: -.015em; }
+.page-head h1 em { font-style: italic; color: var(--accent-deep); }
+.page-head .eyebrow { margin-bottom: .6rem; }
 .page-head p { color: var(--ink-soft); margin-top: .4rem; max-width: 60ch; }
 .crumb { display: inline-flex; align-items: center; gap: .4rem; font-size: .85rem; color: var(--ink-soft); margin-bottom: .8rem; }
 .crumb a:hover { color: var(--accent); }
@@ -80,16 +129,17 @@
   display: flex; flex-direction: column; text-align: left;
   transition: transform .3s var(--ease-out), box-shadow .3s var(--ease-out);
 }
-.lcard:hover { transform: translateY(-4px); box-shadow: var(--shadow-card-hover); }
-.lcard__media { position: relative; height: 150px; }
-.lcard__media .swatch { position: absolute; inset: 0; height: 100%; border-radius: 0; }
+.lcard:hover { transform: translateY(-6px); box-shadow: var(--shadow-card-hover); }
+.lcard__media { position: relative; height: 150px; overflow: hidden; }
+.lcard__media .swatch { position: absolute; inset: 0; height: 100%; border-radius: 0; transition: transform .6s var(--ease-out); }
+.lcard:hover .lcard__media .swatch { transform: scale(1.05); }
 .lcard__badges { position: absolute; top: .6rem; left: .6rem; display: flex; gap: .4rem; flex-wrap: wrap; z-index: 2; }
 .lcard__fav { position: absolute; top: .6rem; right: .6rem; z-index: 2; }
 .lcard__body { padding: .9rem 1rem 1.1rem; display: flex; flex-direction: column; gap: .35rem; flex: 1; }
 .lcard__title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 500; line-height: 1.2; }
 .lcard__meta { font-size: .82rem; color: var(--ink-soft); }
 .lcard__foot { margin-top: auto; display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; padding-top: .5rem; }
-.lcard__price { font-family: var(--font-display); font-size: 1.25rem; }
+.lcard__price { font-family: var(--font-display); font-size: 1.25rem; color: var(--accent-deep); }
 .lcard__price small { font-size: .72rem; color: var(--ink-soft); font-family: var(--font-body); }
 
 /* ---------- Badges / pills ---------- */
@@ -155,8 +205,8 @@
 .gallery__thumb { width: 72px; height: 56px; border-radius: 10px; overflow: hidden; border: 2px solid transparent; cursor: pointer; position: relative; }
 .gallery__thumb.is-active { border-color: var(--accent); }
 .gallery__thumb .swatch { position: absolute; inset: 0; height: 100%; border-radius: 0; }
-.detail__title { font-family: var(--font-display); font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 400; line-height: 1.05; margin: .3rem 0 .6rem; }
-.detail__price { font-family: var(--font-display); font-size: 2rem; margin: .8rem 0; }
+.detail__title { font-family: var(--font-display); font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 500; line-height: 1.05; margin: .3rem 0 .6rem; }
+.detail__price { font-family: var(--font-display); font-size: 2rem; margin: .8rem 0; color: var(--accent-deep); }
 .detail__price small { font-size: .9rem; color: var(--ink-soft); font-family: var(--font-body); }
 .detail__seller { display: flex; align-items: center; gap: .7rem; padding: .9rem; border: 1px solid var(--line); border-radius: var(--radius-sm); margin: 1rem 0; }
 .detail__seller a:hover { color: var(--accent); }
@@ -178,7 +228,7 @@
 
 .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 1rem; margin-bottom: 1.6rem; }
 .stat-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 1.1rem; }
-.stat-card b { font-family: var(--font-display); font-size: 1.9rem; font-weight: 400; display: block; line-height: 1; }
+.stat-card b { font-family: var(--font-display); font-size: 1.9rem; font-weight: 500; display: block; line-height: 1; }
 .stat-card span { font-size: .82rem; color: var(--ink-soft); }
 
 .tabs { display: flex; gap: .3rem; border-bottom: 1px solid var(--line); margin-bottom: 1.4rem; flex-wrap: wrap; }
@@ -207,7 +257,7 @@
 /* ---------- Notifications ---------- */
 .notif { display: flex; gap: .8rem; padding: .9rem 1rem; border: 1px solid var(--line); border-radius: var(--radius-sm); background: #fff; margin-bottom: .6rem; align-items: flex-start; }
 .notif.is-unread { border-left: 3px solid var(--accent); }
-.notif__dot { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--paper-deep); flex: 0 0 auto; }
+.notif__dot { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: rgba(201, 111, 74, .1); color: var(--accent-deep); flex: 0 0 auto; }
 .notif time { font-size: .76rem; color: var(--ink-soft); }
 
 /* ---------- Cart / checkout ---------- */
@@ -229,12 +279,12 @@
 /* ---------- Empty state ---------- */
 .empty { text-align: center; padding: 3.5rem 1rem; color: var(--ink-soft); }
 .empty svg { width: 54px; height: 54px; margin: 0 auto 1rem; color: var(--sage); }
-.empty h3 { font-family: var(--font-display); font-size: 1.4rem; color: var(--ink); font-weight: 400; margin-bottom: .3rem; }
+.empty h3 { font-family: var(--font-display); font-size: 1.4rem; color: var(--ink); font-weight: 500; margin-bottom: .3rem; }
 
 /* ---------- Auth ---------- */
 .auth { max-width: 420px; margin: 2rem auto; }
 .auth .card { padding: 2rem; }
-.auth h1 { font-family: var(--font-display); font-weight: 400; font-size: 1.9rem; margin-bottom: .3rem; }
+.auth h1 { font-family: var(--font-display); font-weight: 500; font-size: 1.9rem; margin-bottom: .3rem; }
 .oauth { display: grid; gap: .6rem; margin: 1.2rem 0; }
 .oauth button { display: flex; align-items: center; justify-content: center; gap: .6rem; padding: .7rem; border: 1.5px solid var(--line); border-radius: 12px; background: #fff; font: inherit; font-weight: 500; cursor: pointer; }
 .oauth button:hover { border-color: var(--ink); }
@@ -268,7 +318,7 @@
 .modal-backdrop { position: fixed; inset: 0; background: rgba(20,28,22,.5); backdrop-filter: blur(3px); z-index: 2500; display: grid; place-items: center; padding: 1.2rem; animation: fadeIn .2s; }
 @keyframes fadeIn { from { opacity: 0; } }
 .modal { background: var(--paper); border-radius: var(--radius); padding: 1.8rem; max-width: 460px; width: 100%; box-shadow: var(--shadow-card-hover); animation: toastIn .3s var(--ease-spring); max-height: 90vh; overflow-y: auto; }
-.modal h2 { font-family: var(--font-display); font-weight: 400; font-size: 1.5rem; margin-bottom: .3rem; }
+.modal h2 { font-family: var(--font-display); font-weight: 500; font-size: 1.5rem; margin-bottom: .3rem; }
 .modal__close { float: right; background: none; border: 0; font-size: 1.4rem; cursor: pointer; line-height: 1; color: var(--ink-soft); }
 
 /* ---------- Misc ---------- */
