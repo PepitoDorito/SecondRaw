@@ -201,6 +201,9 @@
   let marketState = { q: "", category: "", condition: "", minPrice: "", maxPrice: "", minQty: "", location: "", sort: "destaque" };
 
   function viewMarket(_, query) {
+    // O mercado é reservado a utilizadores com sessão iniciada.
+    // Sem sessão, mostramos a landing page institucional.
+    if (!S.currentUser()) { location.replace("index.html"); return; }
     if (query.q != null) marketState.q = query.q;
     if (query.category != null) marketState.category = query.category;
 

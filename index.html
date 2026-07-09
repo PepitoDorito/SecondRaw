@@ -564,6 +564,22 @@
     </div>
   </footer>
 
+  <script>
+    /* Sem sessão iniciada, os CTAs que abrem o mercado levam ao login;
+       o mercado (app.html#/) só está acessível a utilizadores autenticados. */
+    (function () {
+      var loggedIn = false;
+      try {
+        var db = JSON.parse(localStorage.getItem("secondraw:v1"));
+        loggedIn = !!(db && db.session);
+      } catch (e) {}
+      if (!loggedIn) {
+        document.querySelectorAll('a[href^="app.html"]').forEach(function (a) {
+          a.setAttribute("href", "app.html#/entrar");
+        });
+      }
+    })();
+  </script>
   <script src="script.js" defer></script>
 </body>
 </html>
